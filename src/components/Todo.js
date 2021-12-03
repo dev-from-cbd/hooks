@@ -9,16 +9,16 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
     value: "",
   });
 
-  const submitUpdate = value => {
-      updateTodo(edit.id, value)
-      setEdit({
-          id: null,
-          value: ''
-      })
-  }
+  const submitUpdate = (value) => {
+    updateTodo(edit.id, value);
+    setEdit({
+      id: null,
+      value: "",
+    });
+  };
 
   if (edit.id) {
-      return <TodoForm edit={edit} onSubmit={submitUpdate} />
+    return <TodoForm edit={edit} onSubmit={submitUpdate} />;
   }
 
   return todos.map((todo, index) => (
@@ -34,10 +34,13 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
           onClick={() => removeTodo(todo.id)}
           className="delete-icon"
         />
-        <TiEdit onClick={() => setEdit(id: todo.id, value: todo.text)} className="edit-icon" />
+        <TiEdit
+          onClick={() => setEdit({ id: todo.id, value: todo.text })}
+          className="edit-icon"
+        />
       </div>
     </div>
   ));
-}
+};
 
 export default Todo;
